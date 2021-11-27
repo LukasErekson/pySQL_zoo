@@ -1,9 +1,10 @@
 import sys
 import sqlite3
+from typing import List
 import pandas as pd
 
 
-def main(arguments):
+def main(arguments: list):
     """Generates an SQL database from a CSV file using Pandas.
     
     Raises
@@ -20,7 +21,7 @@ def main(arguments):
     connection.close()
 
 
-def get_filenames(arguments):
+def get_filenames(arguments: list) -> tuple:
     """Extracts the filenames from the arguments as strings.
     
     Parameters
@@ -47,7 +48,7 @@ def get_filenames(arguments):
 
     return (csv_filename, db_filename)
 
-def correct_extension(filename, extension='.csv'):
+def correct_extension(filename: str, extension: str ='.csv') -> str:
     """Ensures that the passed in filename has the correct extension. Defaults
     to csv.
     
