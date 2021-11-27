@@ -1,4 +1,4 @@
-<img src="Sql_zoo.png" alt="SQL Zoo"/>
+<img src="Sql_zoo.png" width="50%" alt="SQL Zoo"/>
 
 # pySQL Zoo
 A way to showcase my solutions going through the [SQL Zoo](https://sqlzoo.net/wiki/SQL_Tutorial) using the sqlite3 package in Python.
