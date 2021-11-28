@@ -1,4 +1,5 @@
 import sqlite3
+import pandas as pd
 
 def main():
     """Runs and prints the results of the queries required in the first lesson
@@ -8,17 +9,17 @@ def main():
     cur = conn.cursor()
 
     # Problem 1
-    print(f"The population of Germany is {prob1(cur)}.")
+    print(f"Problem 1:\n{prob1(cur)}\n")
 
     # Problem 2
-    print(prob2(cur))
+    print(f"Problem 2:\n{prob2(cur)}\n")
 
     # Problem 3
-    print(prob3(cur))
+    print(f"Problem 3:\n{prob3(cur)}\n")
 
     conn.close()
 
-def prob1(cur: sqlite3.Cursor) -> int:
+def prob1(cur: sqlite3.Cursor) -> pd.DataFrame:
     """Use a query to find the population of Germany.
     
     Parameters
@@ -27,13 +28,14 @@ def prob1(cur: sqlite3.Cursor) -> int:
 
     Returns
     -------
-        (int) : Population of Germany according to the world table in world.db.
+        (pd.DataFrame) : Table with the population of Germany according to 
+        the world table in world.db.
     """
     cur.execute('SELECT population FROM world WHERE name = "Germany";')
-    
-    return cur.fetchall()[0][0]
 
-def prob2(cur: sqlite3.Cursor) -> list:
+    return pd.DataFrame(data=cur.fetchall(), columns=['population'])
+
+def prob2(cur: sqlite3.Cursor) ->  pd.DataFrame:
     """Show the name and the population for 'Sweden', 'Norway' and 'Denmark'.
 
     Parameters
@@ -42,15 +44,15 @@ def prob2(cur: sqlite3.Cursor) -> list:
 
     Returns
     -------
-        (list of tuples) : List of (name, population) for 'Sweden', 'Norway' 
+        (pd.DataFrame) : Table of (name, population) for 'Sweden', 'Norway' 
         and 'Denmark' according to the world table in world.db.
 
     """
     cur.execute('SELECT name, population FROM world WHERE name IN ("Sweden", "Norway", "Denmark");')
 
-    return cur.fetchall()
+    return pd.DataFrame(data=cur.fetchall(), columns=['name', 'population'])
 
-def prob3(cur: sqlite3.Cursor) -> int:
+def prob3(cur: sqlite3.Cursor) -> pd.DataFrame:
     """Show the country and the area for countries with an area between
     200,000 and 250,000.
     
@@ -60,12 +62,12 @@ def prob3(cur: sqlite3.Cursor) -> int:
 
     Returns
     -------
-        (list of tuples) : List of (name, area) for for countries with an area
+        (pd.DataFrame) : Table of (name, area) for for countries with an area
         between 200,000 and 250,000. according to the world table in world.db.
     """
     cur.execute('SELECT name, area FROM world WHERE area BETWEEN 200000 AND 250000;')
 
-    return cur.fetchall()
+    return pd.DataFrame(data=cur.fetchall(), columns=['name', 'area'])
 
 if __name__ == "__main__":
     main()
