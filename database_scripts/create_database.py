@@ -6,6 +6,11 @@ import pandas as pd
 
 def main(arguments: list):
     """Generates an SQL database from a CSV file using Pandas.
+
+    Parameters
+    ----------
+        arguments (list) : The arguments passed in by the user running the
+            script.
     
     Raises
     ------
@@ -28,7 +33,7 @@ def get_filenames(arguments: list) -> tuple:
     
     Parameters
     ----------
-        arguments (array) : The arguments passed in by the user running the
+        arguments (list) : The arguments passed in by the user running the
             script.
     
     Returns
