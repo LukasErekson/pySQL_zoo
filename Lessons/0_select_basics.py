@@ -5,19 +5,21 @@ def main():
     """Runs and prints the results of the queries required in the first lesson
     of the SQL Zoo, Select basics.
     """
-    conn = sqlite3.connect('databases/world.db')
-    cur = conn.cursor()
+    try:
+        conn = sqlite3.connect('databases/world.db')
+        cur = conn.cursor()
 
-    # Problem 1
-    print(f"Problem 1:\n{prob1(cur)}\n")
+        # Problem 1
+        print(f"Problem 1:\n{prob1(cur)}\n")
 
-    # Problem 2
-    print(f"Problem 2:\n{prob2(cur)}\n")
+        # Problem 2
+        print(f"Problem 2:\n{prob2(cur)}\n")
 
-    # Problem 3
-    print(f"Problem 3:\n{prob3(cur)}\n")
+        # Problem 3
+        print(f"Problem 3:\n{prob3(cur)}\n")
 
-    conn.close()
+    finally:
+        conn.close()
 
 def prob1(cur: sqlite3.Cursor) -> pd.DataFrame:
     """Use a query to find the population of Germany.
