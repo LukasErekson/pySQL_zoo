@@ -13,12 +13,14 @@ def main(arguments: list):
     """
     csv_filename, db_filename = get_filenames(arguments)
 
-    connection = sqlite3.connect(db_filename)
-    csv_data = pd.read_csv(csv_filename)
+    try:
+        connection = sqlite3.connect(db_filename)
+        csv_data = pd.read_csv(csv_filename)
 
-    csv_data.to_sql('world', connection, if_exists='replace', index=False)
+        csv_data.to_sql('world', connection, if_exists='replace', index=False)
 
-    connection.close()
+    finally:
+        connection.close()
 
 
 def get_filenames(arguments: list) -> tuple:
