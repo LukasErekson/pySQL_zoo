@@ -2,8 +2,8 @@ import sqlite3
 import pandas as pd
 
 def main():
-    """Runs and prints the results of the queries required in the second lesson
-    of the SQL Zoo, SELECT from world.
+    """Runs and prints the results of the queries required a given SQL Zoo
+    lesson.
     """
     try:
         conn = sqlite3.connect('databases/world.db')
