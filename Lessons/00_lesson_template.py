@@ -55,46 +55,214 @@ def main():
         conn.close()
 
 def prob1(cur: sqlite3.Cursor) -> pd.DataFrame:
-    pass
+    """
+    
+    Parameters
+    ----------
+        cur (sqlite3.Cursor) : The cursor for the database we're accessing.
+
+    Returns
+    -------
+        (pd.DataFrame) : Table with the solution.
+    """
+    cur.execute("")
+
+    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
 def prob2(cur: sqlite3.Cursor) -> pd.DataFrame:
-    pass
+    """
+    
+    Parameters
+    ----------
+        cur (sqlite3.Cursor) : The cursor for the database we're accessing.
+
+    Returns
+    -------
+        (pd.DataFrame) : Table with the solution.
+    """
+    cur.execute("")
+
+    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
 def prob3(cur: sqlite3.Cursor) -> pd.DataFrame:
-    pass
+    """
+    
+    Parameters
+    ----------
+        cur (sqlite3.Cursor) : The cursor for the database we're accessing.
+
+    Returns
+    -------
+        (pd.DataFrame) : Table with the solution.
+    """
+    cur.execute("")
+
+    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
 def prob4(cur: sqlite3.Cursor) -> pd.DataFrame:
-    pass
+    """
+    
+    Parameters
+    ----------
+        cur (sqlite3.Cursor) : The cursor for the database we're accessing.
+
+    Returns
+    -------
+        (pd.DataFrame) : Table with the solution.
+    """
+    cur.execute("")
+
+    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
 def prob5(cur: sqlite3.Cursor) -> pd.DataFrame:
-    pass
+    """
+    
+    Parameters
+    ----------
+        cur (sqlite3.Cursor) : The cursor for the database we're accessing.
+
+    Returns
+    -------
+        (pd.DataFrame) : Table with the solution.
+    """
+    cur.execute("")
+
+    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
 def prob6(cur: sqlite3.Cursor) -> pd.DataFrame:
-    pass
+    """
+    
+    Parameters
+    ----------
+        cur (sqlite3.Cursor) : The cursor for the database we're accessing.
+
+    Returns
+    -------
+        (pd.DataFrame) : Table with the solution.
+    """
+    cur.execute("")
+
+    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
 def prob7(cur: sqlite3.Cursor) -> pd.DataFrame:
-    pass
+    """
+    
+    Parameters
+    ----------
+        cur (sqlite3.Cursor) : The cursor for the database we're accessing.
+
+    Returns
+    -------
+        (pd.DataFrame) : Table with the solution.
+    """
+    cur.execute("")
+
+    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
 def prob8(cur: sqlite3.Cursor) -> pd.DataFrame:
-    pass
+    """
+    
+    Parameters
+    ----------
+        cur (sqlite3.Cursor) : The cursor for the database we're accessing.
+
+    Returns
+    -------
+        (pd.DataFrame) : Table with the solution.
+    """
+    cur.execute("")
+
+    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
 def prob9(cur: sqlite3.Cursor) -> pd.DataFrame:
-    pass
+    """
+    
+    Parameters
+    ----------
+        cur (sqlite3.Cursor) : The cursor for the database we're accessing.
+
+    Returns
+    -------
+        (pd.DataFrame) : Table with the solution.
+    """
+    cur.execute("")
+
+    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
 def prob10(cur: sqlite3.Cursor) -> pd.DataFrame:
-    pass
+    """
+    
+    Parameters
+    ----------
+        cur (sqlite3.Cursor) : The cursor for the database we're accessing.
+
+    Returns
+    -------
+        (pd.DataFrame) : Table with the solution.
+    """
+    cur.execute("")
+
+    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
 def prob11(cur: sqlite3.Cursor) -> pd.DataFrame:
-    pass
+    """
+    
+    Parameters
+    ----------
+        cur (sqlite3.Cursor) : The cursor for the database we're accessing.
+
+    Returns
+    -------
+        (pd.DataFrame) : Table with the solution.
+    """
+    cur.execute("")
+
+    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
 def prob12(cur: sqlite3.Cursor) -> pd.DataFrame:
-    pass
+    """
+    
+    Parameters
+    ----------
+        cur (sqlite3.Cursor) : The cursor for the database we're accessing.
+
+    Returns
+    -------
+        (pd.DataFrame) : Table with the solution.
+    """
+    cur.execute("")
+
+    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
 def prob13(cur: sqlite3.Cursor) -> pd.DataFrame:
-    pass
+    """
+    
+    Parameters
+    ----------
+        cur (sqlite3.Cursor) : The cursor for the database we're accessing.
+
+    Returns
+    -------
+        (pd.DataFrame) : Table with the solution.
+    """
+    cur.execute("")
+
+    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
 def prob14(cur: sqlite3.Cursor) -> pd.DataFrame:
-    pass
+    """
+    
+    Parameters
+    ----------
+        cur (sqlite3.Cursor) : The cursor for the database we're accessing.
+
+    Returns
+    -------
+        (pd.DataFrame) : Table with the solution.
+    """
+    cur.execute("")
+
+    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
 if __name__ == "__main__":
     main()
