@@ -22,7 +22,7 @@ def main(arguments: list):
         connection = sqlite3.connect(db_filename)
         csv_data = pd.read_csv(csv_filename, delimiter='\t')
 
-        csv_data.to_sql('world', connection, if_exists='replace', index=False)
+        csv_data.to_sql(csv_filename[:-4], connection, if_exists='replace', index=False)
 
     finally:
         connection.close()
