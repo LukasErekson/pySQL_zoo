@@ -16,13 +16,13 @@ def main(arguments: list):
     ------
         ValueError if there aren't enough arguments.
     """
-    csv_filename, db_filename = get_filenames(arguments)
+    csv_filename, db_filename, delimiter = get_filenames(arguments)
 
     try:
         connection = sqlite3.connect(db_filename)
-        csv_data = pd.read_csv(csv_filename, delimiter='\t')
+        csv_data = pd.read_csv(csv_filename, delimiter=delimiter)
 
-        csv_data.to_sql(csv_filename[:-4], connection, if_exists='replace', index=False)
+        csv_data.to_sql(db_filename, connection, if_exists='replace', index=False)
 
     finally:
         connection.close()
@@ -38,7 +38,9 @@ def get_filenames(arguments: list) -> tuple:
     
     Returns
     -------
-        tuple (str, str) : The names of the csv and database files respectively.
+        str : The name of the csv file.
+        str : The name of the database file.
+        str : The delimiter to use.
     
     Raises
     ------
@@ -53,7 +55,12 @@ def get_filenames(arguments: list) -> tuple:
     else:
         raise ValueError('Please input the filename of the csv file to convert.')
 
-    return (csv_filename, db_filename)
+    if len(arguments) == 4:
+        delimiter = arguments[3]
+    else:
+        delimiter = ','
+
+    return csv_filename, db_filename, delimiter
 
 def correct_extension(filename: str, extension: str ='.csv') -> str:
     """Ensures that the passed in filename has the correct extension. Defaults
