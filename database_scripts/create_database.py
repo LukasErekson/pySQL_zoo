@@ -17,12 +17,13 @@ def main(arguments: list):
         ValueError if there aren't enough arguments.
     """
     csv_filename, db_filename, delimiter = get_filenames(arguments)
+    table_name = db_filename.split('/')[-1][:-3]
 
     try:
         connection = sqlite3.connect(db_filename)
         csv_data = pd.read_csv(csv_filename, delimiter=delimiter)
 
-        csv_data.to_sql(db_filename, connection, if_exists='replace', index=False)
+        csv_data.to_sql(table_name, connection, if_exists='replace', index=False)
 
     finally:
         connection.close()
