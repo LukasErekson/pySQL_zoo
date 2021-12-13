@@ -136,7 +136,6 @@ def prob6(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    # TODO Check world.db to see if there is an error in GDP.
     cur.execute("SELECT name FROM world WHERE gdp > (SELECT MAX(gdp) FROM world WHERE gdp > 0 AND continent = 'Europe');")
 
     return pd.DataFrame(cur.fetchall(), columns=['name'])
