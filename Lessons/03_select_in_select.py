@@ -54,7 +54,11 @@ def prob1(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT name FROM world WHERE population > (SELECT population FROM world WHERE name = 'Russia');")
+    cur.execute("""SELECT name
+                FROM world
+                WHERE population > (SELECT population
+                FROM world
+                WHERE name = 'Russia');""")
 
     return pd.DataFrame(cur.fetchall(), columns=['name'])
 
@@ -70,7 +74,11 @@ def prob2(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT name FROM world WHERE continent = 'Europe' AND gdp/population > (SELECT gdp/population FROM world WHERE name = 'United Kingdom');")
+    cur.execute("""SELECT name
+                FROM world
+                WHERE continent = 'Europe' AND gdp/population > (SELECT gdp/population
+                FROM world
+                WHERE name = 'United Kingdom');""")
 
     return pd.DataFrame(cur.fetchall(), columns=['name'])
 
@@ -86,7 +94,12 @@ def prob3(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT name, continent FROM world WHERE continent IN (SELECT continent FROM world WHERE name IN ('Argentina', 'Australia')) ORDER BY name;")
+    cur.execute("""SELECT name, continent
+                FROM world
+                WHERE continent IN (SELECT continent
+                FROM world
+                WHERE name IN ('Argentina', 'Australia'))
+                ORDER BY name;""")
 
     return pd.DataFrame(cur.fetchall(), columns=['name', 'continent'])
 
@@ -102,7 +115,13 @@ def prob4(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT name, population FROM world WHERE population > (SELECT population FROM world WHERE name = 'Canada') AND population < (SELECT population FROM world WHERE name = 'Poland');")
+    cur.execute("""SELECT name, population
+                FROM world
+                WHERE population > (SELECT population
+                FROM world
+                WHERE name = 'Canada') AND population < (SELECT population
+                FROM world
+                WHERE name = 'Poland');""")
 
     return pd.DataFrame(cur.fetchall(), columns=['name', 'population'])
 
@@ -120,7 +139,11 @@ def prob5(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
     # The SQLite solution differs slightly from the MySQL solution I used on
     # the website due to not having FORMAT and how CONCAT works as ||.
-    cur.execute("SELECT name, (CAST(100*population/(SELECT population FROM world WHERE name = 'Germany') AS TEXT) || '%') AS percentage FROM world WHERE continent = 'Europe';")
+    cur.execute("""SELECT name, (CAST(100*population/(SELECT population
+                FROM world
+                WHERE name = 'Germany') AS TEXT) || '%') AS percentage
+                FROM world
+                WHERE continent = 'Europe';""")
 
     return pd.DataFrame(cur.fetchall(), columns=['name', 'percentage'])
 
@@ -136,7 +159,11 @@ def prob6(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT name FROM world WHERE gdp > (SELECT MAX(gdp) FROM world WHERE gdp > 0 AND continent = 'Europe');")
+    cur.execute("""SELECT name
+                FROM world
+                WHERE gdp > (SELECT MAX(gdp)
+                FROM world
+                WHERE gdp > 0 AND continent = 'Europe');""")
 
     return pd.DataFrame(cur.fetchall(), columns=['name'])
 
@@ -152,7 +179,11 @@ def prob7(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT continent, name, area FROM world AS w_outer WHERE area >= (SELECT MAX(area) FROM world AS w_inner WHERE w_outer.continent = w_inner.continent);")
+    cur.execute("""SELECT continent, name, area
+                FROM world AS w_outer
+                WHERE area >= (SELECT MAX(area)
+                FROM world AS w_inner
+                WHERE w_outer.continent = w_inner.continent);""")
 
     return pd.DataFrame(cur.fetchall(), columns=['continent', 'name', 'area'])
 
@@ -168,7 +199,11 @@ def prob8(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT continent, name FROM world AS w_outer WHERE name <= (SELECT MIN(name) FROM world as w_inner WHERE w_outer.continent = w_inner.continent);")
+    cur.execute("""SELECT continent, name
+                FROM world AS w_outer
+                WHERE name <= (SELECT MIN(name)
+                FROM world as w_inner
+                WHERE w_outer.continent = w_inner.continent);""")
 
     return pd.DataFrame(cur.fetchall(), columns=['name', 'continent'])
 
@@ -185,7 +220,11 @@ def prob9(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT name, continent, population FROM world AS out_world WHERE 25000000 >= (SELECT MAX(population) FROM world AS in_world WHERE out_world.continent = in_world.continent);")
+    cur.execute("""SELECT name, continent, population
+                FROM world AS out_world
+                WHERE 25000000 >= (SELECT MAX(population)
+                FROM world AS in_world
+                WHERE out_world.continent = in_world.continent);""")
 
     return pd.DataFrame(cur.fetchall(), columns=['name', 'continent', 'population'])
 
@@ -202,7 +241,11 @@ def prob10(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT name, continent FROM world AS out_world WHERE population >=(SELECT MAX(population*3) FROM world as in_world WHERE out_world.continent = in_world.continent AND out_world.name <> in_world.name);")
+    cur.execute("""SELECT name, continent
+                FROM world AS out_world
+                WHERE population >=(SELECT MAX(population*3)
+                FROM world as in_world
+                WHERE out_world.continent = in_world.continent AND out_world.name <> in_world.name);""")
 
     return pd.DataFrame(cur.fetchall(), columns=['name', 'continent'])
 
