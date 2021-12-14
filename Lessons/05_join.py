@@ -62,7 +62,9 @@ def prob1(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT matchid, player FROM goal WHERE teamid = 'GER';")
+    cur.execute("""SELECT matchid, player
+                FROM goal
+                WHERE teamid = 'GER';""")
 
     return pd.DataFrame(cur.fetchall())
 
@@ -77,7 +79,9 @@ def prob2(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT id, stadium, team1, team2 FROM game WHERE id = 1012;")
+    cur.execute("""SELECT id, stadium, team1, team2
+                FROM game
+                WHERE id = 1012;""")
 
     return pd.DataFrame(cur.fetchall())
 
@@ -93,7 +97,9 @@ def prob3(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT goal.player, goal.teamid, game.stadium, game.mdate FROM goal JOIN game ON (game.id = goal.matchid) WHERE goal.teamid = 'GER';")
+    cur.execute("""SELECT goal.player, goal.teamid, game.stadium, game.mdate
+                FROM goal JOIN game
+                ON (game.id = goal.matchid) WHERE goal.teamid = 'GER';""")
 
     return pd.DataFrame(cur.fetchall())
 
@@ -109,7 +115,9 @@ def prob4(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT game.team1, game.team2, goal.player FROM goal JOIN game ON (game.id = goal.matchid) WHERE goal.player LIKE 'Mario%';")
+    cur.execute("""SELECT game.team1, game.team2, goal.player
+                FROM goal JOIN game
+                ON (game.id = goal.matchid) WHERE goal.player LIKE 'Mario%';""")
 
     return pd.DataFrame(cur.fetchall())
 
@@ -126,7 +134,8 @@ def prob5(cur: sqlite3.Cursor) -> pd.DataFrame:
         (pd.DataFrame) : Table with the solution.
     """
     cur.execute("""SELECT player, teamid, coach, gtime
-                FROM goal JOIN eteam ON goal.teamid = eteam.id
+                FROM goal JOIN eteam
+                ON goal.teamid = eteam.id
                 WHERE goal.gtime <= 10;""")
 
     return pd.DataFrame(cur.fetchall())
@@ -144,7 +153,8 @@ def prob6(cur: sqlite3.Cursor) -> pd.DataFrame:
         (pd.DataFrame) : Table with the solution.
     """
     cur.execute("""SELECT game.mdate, eteam.teamname
-                FROM game JOIN eteam ON (eteam.id = game.team1)
+                FROM game JOIN eteam
+                ON (eteam.id = game.team1)
                 WHERE eteam.coach = 'Fernando Santos';""")
 
     return pd.DataFrame(cur.fetchall())
@@ -162,7 +172,8 @@ def prob7(cur: sqlite3.Cursor) -> pd.DataFrame:
         (pd.DataFrame) : Table with the solution.
     """
     cur.execute("""SELECT goal.player
-                FROM goal JOIN game ON (goal.matchid = game.id)
+                FROM goal JOIN game
+                ON (goal.matchid = game.id)
                 WHERE game.stadium = 'National Stadium, Warsaw';""")
 
     return pd.DataFrame(cur.fetchall())
