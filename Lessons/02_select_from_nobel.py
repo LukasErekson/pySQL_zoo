@@ -65,7 +65,9 @@ def prob1(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT * FROM nobel WHERE yr = 1950;")
+    cur.execute("""SELECT *
+                FROM nobel
+                WHERE yr = 1950;""")
 
     return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
@@ -80,7 +82,9 @@ def prob2(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT winner FROM nobel WHERE yr = 1962 AND subject = 'Literature';")
+    cur.execute("""SELECT winner
+                FROM nobel
+                WHERE yr = 1962 AND subject = 'Literature';""")
 
     return pd.DataFrame(cur.fetchall(), columns=['winner'])
 
@@ -95,7 +99,9 @@ def prob3(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT yr, subject FROM nobel WHERE winner = 'Albert Einstein';")
+    cur.execute("""SELECT yr, subject
+                FROM nobel
+                WHERE winner = 'Albert Einstein';""")
 
     return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject'])
 
@@ -110,7 +116,9 @@ def prob4(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT winner FROM nobel WHERE subject = 'Peace' AND yr >= 2000;")
+    cur.execute("""SELECT winner
+                FROM nobel
+                WHERE subject = 'Peace' AND yr >= 2000;""")
 
     return pd.DataFrame(cur.fetchall(), columns=['winner'])
 
@@ -126,7 +134,9 @@ def prob5(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT * FROM nobel WHERE subject = 'Literature' AND yr BETWEEN 1980 AND 1989;")
+    cur.execute("""SELECT *
+                FROM nobel
+                WHERE subject = 'Literature' AND yr BETWEEN 1980 AND 1989;""")
 
     return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
@@ -146,7 +156,11 @@ def prob6(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT * FROM nobel WHERE winner IN ('Theodore Roosevelt', 'Woodrow Wilson', 'Jimmy Carter', 'Barack Obama');")
+    cur.execute("""SELECT *
+                FROM nobel
+                WHERE winner IN ('Theodore Roosevelt', 'Woodrow
+                Wilson', 'Jimmy Carter', 'Barack
+                Obama');""")
 
     return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
@@ -161,7 +175,9 @@ def prob7(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT winner FROM nobel WHERE winner LIKE 'John %';")
+    cur.execute("""SELECT winner
+                FROM nobel
+                WHERE winner LIKE 'John %';""")
 
     return pd.DataFrame(cur.fetchall(), columns=['winner'])
 
@@ -177,7 +193,10 @@ def prob8(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT * FROM nobel WHERE (yr = 1980 AND subject = 'Physics') OR (subject = 'Chemistry' AND yr = 1984);")
+    cur.execute("""SELECT *
+                FROM nobel
+                WHERE (yr = 1980 AND subject = 'Physics')
+                OR (subject = 'Chemistry' AND yr = 1984);""")
 
     return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
@@ -193,7 +212,9 @@ def prob9(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT * FROM nobel WHERE yr = 1980 AND subject NOT IN ('Chemistry', 'Medicine');")
+    cur.execute("""SELECT *
+                FROM nobel
+                WHERE yr = 1980 AND subject NOT IN ('Chemistry', 'Medicine');""")
 
     return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
@@ -210,7 +231,10 @@ def prob10(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT * FROM nobel WHERE (subject = 'Medicine' AND yr < 1910) OR (subject = 'Literature' AND yr >= 2004);")
+    cur.execute("""SELECT *
+                FROM nobel
+                WHERE (subject = 'Medicine' AND yr < 1910)
+                OR (subject = 'Literature' AND yr >= 2004);""")
 
     return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
@@ -225,7 +249,9 @@ def prob11(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT * FROM nobel WHERE winner = 'Peter Grünberg';")
+    cur.execute("""SELECT *
+                FROM nobel
+                WHERE winner = 'Peter Grünberg';""")
 
     return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
@@ -240,7 +266,10 @@ def prob12(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute('SELECT * FROM nobel WHERE winner = "Eugene O\'Neill";')
+    cur.execute("""SELECT *
+                FROM nobel
+                WHERE winner = "Eugene
+                O\'Neill";""")
 
     return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
@@ -255,7 +284,10 @@ def prob13(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT winner, yr, subject FROM nobel WHERE winner LIKE 'Sir%' ORDER BY yr DESC;")
+    cur.execute("""SELECT winner, yr, subject
+                FROM nobel
+                WHERE winner LIKE 'Sir%'
+                ORDER BY yr DESC;""")
 
     return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
 
@@ -274,7 +306,10 @@ def prob14(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT winner, subject FROM nobel WHERE yr = 1984 ORDER BY subject IN ('Chemistry', 'Physics'), subject, winner;")
+    cur.execute("""SELECT winner, subject
+                FROM nobel
+                WHERE yr = 1984
+                ORDER BY subject IN ('Chemistry', 'Physics'), subject, winner;""")
 
     return pd.DataFrame(cur.fetchall(), columns=['subject', 'winner'])
 
