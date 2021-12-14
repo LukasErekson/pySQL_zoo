@@ -7,11 +7,13 @@ As I work through the [SQL Zoo Tutorial](https://sqlzoo.net/wiki/SQL_Tutorial), 
 
 All of these solutions and scripts are my own personal work.
 
+The databases on which these exercises are based were obtained manually by querying the SQL Zoo databases for the relevant .tsv information.
+
 <br />
 <br />
 
 ## Showcased Skills
 ___
-- ### SQL Queries: Executing SQL queries accurately.
+- ### SQL Queries: Executing SQL queries accurately and in a way that is readable to someone reviewing the queires later.
 - ### Scripting: Creating SQLite Databases from csv/tsv files using Python and Pandas.
 - ### Documentation: Clean, standardized documentation for my scripts and solutions.
