@@ -67,7 +67,7 @@ def prob1(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
     cur.execute("")
 
-    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
+    return pd.DataFrame(cur.fetchall())
 
 def prob2(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
@@ -82,7 +82,7 @@ def prob2(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
     cur.execute("")
 
-    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
+    return pd.DataFrame(cur.fetchall())
 
 def prob3(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
@@ -97,7 +97,7 @@ def prob3(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
     cur.execute("")
 
-    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
+    return pd.DataFrame(cur.fetchall())
 
 def prob4(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
@@ -112,7 +112,7 @@ def prob4(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
     cur.execute("")
 
-    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
+    return pd.DataFrame(cur.fetchall())
 
 def prob5(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
@@ -127,7 +127,7 @@ def prob5(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
     cur.execute("")
 
-    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
+    return pd.DataFrame(cur.fetchall())
 
 def prob6(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
@@ -142,7 +142,7 @@ def prob6(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
     cur.execute("")
 
-    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
+    return pd.DataFrame(cur.fetchall())
 
 def prob7(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
@@ -157,7 +157,7 @@ def prob7(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
     cur.execute("")
 
-    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
+    return pd.DataFrame(cur.fetchall())
 
 def prob8(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
@@ -172,7 +172,7 @@ def prob8(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
     cur.execute("")
 
-    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
+    return pd.DataFrame(cur.fetchall())
 
 def prob9(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
@@ -187,7 +187,7 @@ def prob9(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
     cur.execute("")
 
-    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
+    return pd.DataFrame(cur.fetchall())
 
 def prob10(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
@@ -202,7 +202,7 @@ def prob10(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
     cur.execute("")
 
-    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
+    return pd.DataFrame(cur.fetchall())
 
 def prob11(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
@@ -217,7 +217,7 @@ def prob11(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
     cur.execute("")
 
-    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
+    return pd.DataFrame(cur.fetchall())
 
 def prob12(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
@@ -232,7 +232,7 @@ def prob12(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
     cur.execute("")
 
-    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
+    return pd.DataFrame(cur.fetchall())
 
 def prob13(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
@@ -247,7 +247,7 @@ def prob13(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
     cur.execute("")
 
-    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
+    return pd.DataFrame(cur.fetchall())
 
 def prob14(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
@@ -262,7 +262,7 @@ def prob14(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
     cur.execute("")
 
-    return pd.DataFrame(cur.fetchall(), columns=['yr', 'subject', 'winner'])
+    return pd.DataFrame(cur.fetchall())
 
 if __name__ == "__main__":
     main()
