@@ -64,7 +64,9 @@ def prob1(cur: sqlite3.Cursor) -> pd.DataFrame:
         (pd.DataFrame) : Table with the name, continent and population of all 
         countries in the world table.
     """
-    cur.execute('SELECT name, continent, population FROM world WHERE name = "Germany";')
+    cur.execute("""SELECT name, continent, population
+                FROM world
+                WHERE name = "Germany";""")
 
     return pd.DataFrame(data=cur.fetchall(), columns=['name', 'continent', 'population'])
 
@@ -82,7 +84,9 @@ def prob2(cur: sqlite3.Cursor) ->  pd.DataFrame:
         population of at least 200 million in world.db.
 
     """
-    cur.execute('SELECT name FROM world WHERE population > 200e6;')
+    cur.execute("""SELECT name
+                FROM world
+                WHERE population > 200e6;""")
 
     return pd.DataFrame(data=cur.fetchall(), columns=['name'])
 
@@ -99,7 +103,9 @@ def prob3(cur: sqlite3.Cursor) -> pd.DataFrame:
         (pd.DataFrame) : Table of the name and the per capita GDP for those 
         countries with a population of at least 200 million in world.db.
     """
-    cur.execute('SELECT name, gdp/population AS per_capita_gdp FROM world WHERE population > 2e8;')
+    cur.execute("""SELECT name, gdp/population AS per_capita_gdp
+                FROM world
+                WHERE population > 2e8;""")
 
     return pd.DataFrame(data=cur.fetchall(), columns=['name', 'per_capita_gdp'])
 
@@ -117,7 +123,9 @@ def prob4(cur: sqlite3.Cursor) -> pd.DataFrame:
         (pd.DataFrame) : Table of the name and population in millions for the
         countries of the continent 'South America' in world.db.
     """
-    cur.execute('SELECT name, population/1e6 FROM world WHERE continent = "South America";')
+    cur.execute("""SELECT name, population/1e6
+                FROM world
+                WHERE continent = "South America";""")
 
     return pd.DataFrame(data=cur.fetchall(), columns=['name', 'population'])
 
@@ -133,7 +141,9 @@ def prob5(cur: sqlite3.Cursor) -> pd.DataFrame:
         (pd.DataFrame) : Table of the name and population for France,
         Germany, and Italy.
     """
-    cur.execute("SELECT name, population FROM world WHERE name IN ('France', 'Germany', 'Italy');")
+    cur.execute("""SELECT name, population
+                FROM world
+                WHERE name IN ('France', 'Germany', 'Italy');""")
 
     return pd.DataFrame(data=cur.fetchall(), columns=['name', 'population'])
 
@@ -149,7 +159,9 @@ def prob6(cur: sqlite3.Cursor) -> pd.DataFrame:
         (pd.DataFrame) : Table of the names where 'United' is
         somewhere in the name.
     """
-    cur.execute("SELECT name FROM world WHERE name LIKE '%United%';")
+    cur.execute("""SELECT name
+                FROM world
+                WHERE name LIKE '%United%';""")
 
     return pd.DataFrame(data=cur.fetchall(), columns=['name'])
 
@@ -168,7 +180,10 @@ def prob7(cur: sqlite3.Cursor) -> pd.DataFrame:
         (pd.DataFrame) : Table of the names, populations, and areas
         of "big" contries.
     """
-    cur.execute("SELECT name, population, area FROM world WHERE area > 3e6 OR population > 250e6;")
+    cur.execute("""SELECT name, population, area
+                FROM world
+                WHERE area > 3e6
+                OR population > 250e6;""")
 
     return pd.DataFrame(data=cur.fetchall(), columns=['name', 'population', 'area'])
 
@@ -189,7 +204,10 @@ def prob8(cur: sqlite3.Cursor) -> pd.DataFrame:
     """
     # Sqlite doesn't support the XOR like MySQL, so a work-around is
     # needed.
-    cur.execute("SELECT name, population, area FROM world WHERE (area > 3e6 AND population < 250e6) OR (area < 3e6 AND population > 250e6);")
+    cur.execute("""SELECT name, population, area
+                FROM world
+                WHERE (area > 3e6 AND population < 250e6)
+                OR (area < 3e6 AND population > 250e6);""")
 
     return pd.DataFrame(data=cur.fetchall(), columns=['name', 'population', 'area'])
 
@@ -207,7 +225,9 @@ def prob9(cur: sqlite3.Cursor) -> pd.DataFrame:
         (pd.DataFrame) : Table of the names, populations, and GDP for
         countries in South America.
     """
-    cur.execute("SELECT name, ROUND(population / 1e6, 2) AS population_in_mil, ROUND(gdp / 1e9, 2) AS gdp_in_bil FROM world WHERE continent = 'South America';")
+    cur.execute("""SELECT name, ROUND(population / 1e6, 2) AS population_in_mil, ROUND(gdp / 1e9, 2) AS gdp_in_bil
+                FROM world
+                WHERE continent = 'South America';""")
 
     return pd.DataFrame(data=cur.fetchall(), columns=['name', 'population_in_mil', 'gdp_in_bil'])
 
@@ -226,7 +246,9 @@ def prob10(cur: sqlite3.Cursor) -> pd.DataFrame:
         those countries with a GDP of at least one trillion
         rounded to the nearest 1000.
     """
-    cur.execute("SELECT name, ROUND(gdp/population, -3) AS per_capita_gdp FROM world WHERE gdp > 1e12;")
+    cur.execute("""SELECT name, ROUND(gdp/population, -3) AS per_capita_gdp
+                FROM world
+                WHERE gdp > 1e12;""")
 
     return pd.DataFrame(data=cur.fetchall(), columns=['name', 'per_capita_gdp'])
 
@@ -243,7 +265,9 @@ def prob11(cur: sqlite3.Cursor) -> pd.DataFrame:
         (pd.DataFrame) : Table of the name and capital where the name
         and the capital have the same number of characters.
     """
-    cur.execute("SELECT name, capital FROM world WHERE LENGTH(name) = LENGTH(capital);")
+    cur.execute("""SELECT name, capital
+                FROM world
+                WHERE LENGTH(name) = LENGTH(capital);""")
 
     return pd.DataFrame(data=cur.fetchall(), columns=['name', 'capital'])
 
@@ -262,7 +286,9 @@ def prob12(cur: sqlite3.Cursor) -> pd.DataFrame:
         first letters of each match but they are not the same value.
     """
     # Sqlite doesn't support the LEFT keyword, so use substr instead.
-    cur.execute("SELECT name, capital FROM world WHERE substr(name, 1, 1) = substr(capital, 1, 1) AND name <> capital;")
+    cur.execute("""SELECT name, capital
+                FROM world
+                WHERE substr(name, 1, 1) = substr(capital, 1, 1) AND name <> capital;""")
 
     return pd.DataFrame(data=cur.fetchall(), columns=['name', 'capital'])
 
@@ -279,7 +305,9 @@ def prob13(cur: sqlite3.Cursor) -> pd.DataFrame:
         (pd.DataFrame) : Table of the name of the country that has 
         all the vowels and no spaces in its name.
     """
-    cur.execute("SELECT name FROM world WHERE name LIKE '%a%' AND name LIKE '%e%' AND name LIKE '%i%' AND name LIKE '%o%' AND name LIKE '%u%' AND name NOT LIKE '% %';")
+    cur.execute("""SELECT name
+                FROM world
+                WHERE name LIKE '%a%' AND name LIKE '%e%' AND name LIKE '%i%' AND name LIKE '%o%' AND name LIKE '%u%' AND name NOT LIKE '% %';""")
 
     return pd.DataFrame(data=cur.fetchall(), columns=['name'])
 
