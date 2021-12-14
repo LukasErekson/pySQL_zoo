@@ -47,7 +47,8 @@ def prob1(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT SUM(population) FROM world;")
+    cur.execute("""SELECT SUM(population)
+                FROM world;""")
 
     return pd.DataFrame(cur.fetchall(), columns=['SUM(population)'])
 
@@ -62,7 +63,8 @@ def prob2(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT DISTINCT continent FROM world;")
+    cur.execute("""SELECT DISTINCT continent
+                FROM world;""")
 
     return pd.DataFrame(cur.fetchall(), columns=['continent'])
 
@@ -77,7 +79,9 @@ def prob3(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT SUM(gdp) FROM world WHERE continent = 'Africa';")
+    cur.execute("""SELECT SUM(gdp)
+                FROM world 
+                WHERE continent = 'Africa';""")
 
     return pd.DataFrame(cur.fetchall(), columns=['SUM(gdp)'])
 
@@ -92,7 +96,9 @@ def prob4(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT COUNT(name) FROM world WHERE area >= 1e6;")
+    cur.execute("""SELECT COUNT(name)
+                FROM world
+                WHERE area >= 1e6;""")
 
     return pd.DataFrame(cur.fetchall(), columns=['COUNT(name)'])
 
@@ -107,7 +113,9 @@ def prob5(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT SUM(population) FROM world WHERE name in ('Estonia', 'Latvia', 'Lithuania');")
+    cur.execute("""SELECT SUM(population)
+                FROM world 
+                WHERE name in ('Estonia', 'Latvia', 'Lithuania');""")
 
     return pd.DataFrame(cur.fetchall(), columns=['SUM(population)'])
 
@@ -122,7 +130,9 @@ def prob6(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT DISTINCT continent, COUNT(name) FROM world GROUP BY continent;")
+    cur.execute("""SELECT DISTINCT continent, COUNT(name)
+                FROM world
+                GROUP BY continent;""")
 
     return pd.DataFrame(cur.fetchall(), columns=['continent', 'COUNT(name)'])
 
@@ -138,7 +148,9 @@ def prob7(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT continent, COUNT(name) FROM world WHERE population >= 10e6 GROUP BY continent;")
+    cur.execute("""SELECT continent, COUNT(name) 
+                FROM world WHERE population >= 10e6
+                GROUP BY continent;""")
 
     return pd.DataFrame(cur.fetchall(), columns=['continent', 'COUNT(name)'])
 
@@ -153,7 +165,10 @@ def prob8(cur: sqlite3.Cursor) -> pd.DataFrame:
     -------
         (pd.DataFrame) : Table with the solution.
     """
-    cur.execute("SELECT continent FROM world GROUP BY continent HAVING SUM(population) >= 100e6;")
+    cur.execute("""SELECT continent
+                FROM world
+                GROUP BY continent
+                HAVING SUM(population) >= 100e6;""")
 
     return pd.DataFrame(cur.fetchall(), columns=['continent'])
 
