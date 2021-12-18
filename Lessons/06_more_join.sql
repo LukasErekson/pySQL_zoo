@@ -27,7 +27,7 @@ SELECT id FROM movie WHERE title = 'Casablanca';
 
 -- Problem 6
 -- Obtain the cast list for 'Casablanca'.
-SELECT actor.name FROM casting JOIN actor ON actor.id = casting.actorid WHERE movieid = (SELECT id FROM movie WHERE title = 'Casablanca') ;
+SELECT actor.name FROM casting JOIN actor ON actor.id = casting.actorid WHERE movieid = (SELECT id FROM movie WHERE title = 'Casablanca');
 
 -- Problem 7
 -- Obtain the cast list for the film 'Alien'.
@@ -65,7 +65,7 @@ SELECT yr,COUNT(title) FROM movie
   JOIN actor   ON actorid=actor.id
   WHERE name='Rock Hudson'
   GROUP BY yr
-  HAVING COUNT(title) > 2
+  HAVING COUNT(title) > 2;
 
 
 -- Problem 12
@@ -93,9 +93,9 @@ SELECT actor.name FROM casting
 -- the cast, then by title.
 SELECT movie.title, COUNT(casting.actorid) AS num_actors FROM movie
   JOIN casting ON movie.id = casting.movieid 
-  WHERE movie.yr = 1978 G
-  ROUP BY movie.title 
-  ORDER BY num_actors DESC, movie.title ;
+  WHERE movie.yr = 1978
+  GROUP BY movie.title 
+  ORDER BY num_actors DESC, movie.title;
 
 -- Problem 15
 -- List all the people who have worked with 'Art Garfunkel'.
